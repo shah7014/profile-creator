@@ -2,6 +2,7 @@ package com.learningbybuilding.resumeportal.profile;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,7 +18,9 @@ public class Job {
     private int id;
     private String company;
     private String designation;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private boolean isPresent;
     @ElementCollection(targetClass = String.class)

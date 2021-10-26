@@ -49,6 +49,10 @@ public class AppInit implements ApplicationListener<ApplicationReadyEvent> {
         Education e2 = new Education();
         e2.setCollege("Awesome College");
         e2.setQualification("Good Degree");
+        e2.setStartDate(LocalDate.of(2015, 10, 10));
+        e2.setEndDate(LocalDate.of(2016, 9, 9));
+        e1.setStartDate(LocalDate.of(2016, 7, 7));
+        e1.setEndDate(LocalDate.of(2017, 10, 11));
         edus.add(e1);
         edus.add(e2);
 
