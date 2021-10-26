@@ -24,5 +24,13 @@ public class UserProfile {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="user_profile")
     private List<Job> jobs;
+
+    @ElementCollection
+    @CollectionTable(name = "education", joinColumns = {@JoinColumn(name = "user_profile_id")})
+    private List<Education> educations;
+
+    @ElementCollection
+    private List<String> skills;
+
     private int theme;
 }

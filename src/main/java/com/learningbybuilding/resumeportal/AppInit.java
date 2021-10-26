@@ -1,5 +1,6 @@
 package com.learningbybuilding.resumeportal;
 
+import com.learningbybuilding.resumeportal.profile.Education;
 import com.learningbybuilding.resumeportal.profile.Job;
 import com.learningbybuilding.resumeportal.profile.UserProfile;
 import com.learningbybuilding.resumeportal.profile.UserProfileRepository;
@@ -35,6 +36,22 @@ public class AppInit implements ApplicationListener<ApplicationReadyEvent> {
     }
 
     private void initUserProfile() {
+        List<String> skills = new ArrayList<>();
+        skills.add("Quantum mechanics");
+        skills.add("Violin");
+        skills.add("Astronomy");
+        skills.add("Mathematics");
+
+        List<Education> edus = new ArrayList<>();
+        Education e1 = new Education();
+        e1.setCollege("Awesome College");
+        e1.setQualification("Good Degree");
+        Education e2 = new Education();
+        e2.setCollege("Awesome College");
+        e2.setQualification("Good Degree");
+        edus.add(e1);
+        edus.add(e2);
+
         UserProfile userProfileEinstein = new UserProfile();
         userProfileEinstein.setUserName("alb");
         userProfileEinstein.setFirstName("Albert");
@@ -45,6 +62,8 @@ public class AppInit implements ApplicationListener<ApplicationReadyEvent> {
         userProfileEinstein.setDesignation("Theoretical physicist");
         userProfileEinstein.setJobs(createJobs(3));
         userProfileEinstein.setTheme(1);
+        userProfileEinstein.setSkills(skills);
+        userProfileEinstein.setEducations(edus);
         userProfileRepository.save(userProfileEinstein);
 
         UserProfile userProfileNewton = new UserProfile();
@@ -57,16 +76,23 @@ public class AppInit implements ApplicationListener<ApplicationReadyEvent> {
         userProfileNewton.setDesignation("Mathematician physicist");
         userProfileNewton.setJobs(createJobs(2));
         userProfileNewton.setTheme(3);
+        userProfileNewton.setSkills(skills);
+        userProfileNewton.setEducations(edus);
         userProfileRepository.save(userProfileNewton);
     }
 
     List<Job> createJobs(int numberOfJobs) {
+        List<String> responsibilities = new ArrayList<>();
+        responsibilities.add("Work on theory of relativity");
+        responsibilities.add("Do some research on atoms");
+        responsibilities.add("Blow people's minds");
         List<Job> jobs = new ArrayList<>();
         IntStream.rangeClosed(1, numberOfJobs).forEach(id -> {
             Job job = new Job();
             job.setCompany("company-" + id);
             job.setDesignation("designation-" + id);
             job.setStartDate(LocalDate.of(2015 + id, 1, 1));
+            job.setResponsibilities(responsibilities);
             if (id == numberOfJobs) {
                 job.setPresent(true);
             } else {

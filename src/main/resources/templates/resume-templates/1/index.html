@@ -62,7 +62,11 @@
 						<span th:text="${job.formattedStartDate}">April 2011</span> -
 						<span th:text="${job.isPresent} ? 'Present' : ${job.formattedEndDate}">Present</span>
 					</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
+					<ul>
+						<li th:each="res : ${job.responsibilities}">
+							<span th:text="${res}">responsibility</span>
+						</li>
+					</ul>
 				</article>
 			</div>
 			<div class="clear"></div>
@@ -76,14 +80,9 @@
 			
 			<div class="sectionContent">
 				<ul class="keySkills">
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
-					<li>A Key Skill</li>
+					<li th:each="skill : ${userProfile.skills}">
+						<span th:text="${skill}">A Key Skill</span>
+					</li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -96,16 +95,9 @@
 			</div>
 			
 			<div class="sectionContent">
-				<article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-				</article>
-				
-				<article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
+				<article th:each="edu : ${userProfile.educations}">
+					<h2 th:text="${edu.college}">College/University</h2>
+					<p class="subDetails" th:text="${edu.qualification}">Qualification</p>
 				</article>
 			</div>
 			<div class="clear"></div>
