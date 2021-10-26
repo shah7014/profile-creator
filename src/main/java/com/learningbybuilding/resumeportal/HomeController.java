@@ -19,6 +19,6 @@ public class HomeController {
     @GetMapping("/view/{userId}")
     public String view(@PathVariable String userId, Model model) {
         model.addAttribute("userId", userId);
-        return "resume-templates/1/index";
+        return "resume-templates/3/index";
     }
 }
