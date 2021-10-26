@@ -19,4 +19,11 @@ public class User {
     private String password;
     private boolean active;
     private String roles;
+
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        this.active = true;
+        this.roles = "USER";
+    }
 }
