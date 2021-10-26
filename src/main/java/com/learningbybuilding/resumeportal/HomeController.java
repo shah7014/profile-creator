@@ -1,24 +1,23 @@
 package com.learningbybuilding.resumeportal;
 
+import com.learningbybuilding.resumeportal.profile.UserProfile;
+import com.learningbybuilding.resumeportal.profile.UserProfileRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
+@AllArgsConstructor
 public class HomeController {
-    /*@GetMapping("/")
-    public String sayHello() {
-        return "Hello";
-    }
+    private final UserProfileRepository userProfileRepository;
 
-    @GetMapping("/edit")
-    public String edit() {
-        return "edit-page";
-    }*/
-    @GetMapping("/view/{userId}")
-    public String view(@PathVariable String userId, Model model) {
-        model.addAttribute("userId", userId);
-        return "resume-templates/3/index";
+    @GetMapping("/view/{userName}")
+    public String view(@PathVariable String userName, Model model) {
+        UserProfile userProfile = userProfileRepository.findByUserName(userName)
+                        .orElseThrow(() -> new RuntimeException(userName + "not found"));
+        model.addAttribute("userProfile", userProfile);
+        return "resume-templates/" + userProfile.getTheme() +"/index";
     }
 }
