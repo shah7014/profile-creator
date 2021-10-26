@@ -29,6 +29,7 @@
 						<h3><span th:text="${userProfile.email}">name@yourdomain.com</span></h3>
 						<h3 th:text="${userProfile.phone}">(313) - 867-5309</h3>
 					</div><!--// .contact-info -->
+					<h2><a th:if="${currentUser} == ${userProfile.userName}" th:href="@{/edit}">Edit profile</a></h2>
 				</div>
 			</div><!--// .yui-gc -->
 		</div><!--// hd -->
